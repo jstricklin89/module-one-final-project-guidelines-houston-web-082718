@@ -1,4 +1,7 @@
 class Style < ActiveRecord::Base
-  # has_many :favorites
-  # has_many :users, through: :favorites
+  belongs_to :category
+  has_many :beers 
+  has_many :breweries, through: :beers
+  has_many :favorites, through: :beers
+  has_many :users, through: :beers 
 end
