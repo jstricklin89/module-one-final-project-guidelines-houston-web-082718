@@ -5,11 +5,7 @@ class Beer < ActiveRecord::Base
   has_many :favorites
   has_many :users, through: :favorites
 
-  def self.most_popular_beer
-    # use id, use max_by on array, use count(id)
-  end
-
-  def self.average_abv
-
+  def self.most_popular(num)
+    Favorite.all.map { |favorite| favorite.beer_id }
   end
 end
