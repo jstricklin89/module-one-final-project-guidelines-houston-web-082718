@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
     id_count = id_array.each_with_object(Hash.new(0)) { |id, count| count[id] += 1}
     
     id_count = id_count.sort_by do |k, v|
-      v
+      
     end.reverse.to_h
   
     id_count.keys.first(num).map do |id|
