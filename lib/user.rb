@@ -9,11 +9,18 @@ class User < ActiveRecord::Base
     Favorite.create(user_id: self.id, beer_id: id)
   end
 
+  def favorite_beer_names
+    self.beers.each do |beer|
+      puts "#{beer.brewery.name} - #{beer.name}"
+    end
+    nil
+  end
+
   def most_popular_breweries(num)
     id_count = get_id_count(self.breweries)
   
     id_count.keys.first(num).map do |id|
-      Brewery.find(id)
+      puts "#{Brewery.find(id).name}: #{Brewery.find(id).city}, #{Brewery.find(id).state}, #{Brewery.find(id).country}"
     end
   end
 
@@ -21,7 +28,7 @@ class User < ActiveRecord::Base
     id_count = get_id_count(self.styles)
   
     id_count.keys.first(num).map do |id|
-      Style.find(id)
+      puts "#{Style.find(id).name}"
     end
   end
 
@@ -29,7 +36,7 @@ class User < ActiveRecord::Base
     id_count = get_id_count(self.categories)
     
     id_count.keys.first(num).map do |id|
-      Category.find(id)
+      puts "#{Category.find(id).name}"
     end
   end
 
@@ -38,7 +45,7 @@ class User < ActiveRecord::Base
     self.favorites.each do |fav|
       sum += Beer.find(fav.beer_id).abv
     end
-    (sum / self.favorites.length).round(2)
+    puts "Your average ABV is #{(sum / self.favorites.length).round(2)}%."
   end
 
   private
