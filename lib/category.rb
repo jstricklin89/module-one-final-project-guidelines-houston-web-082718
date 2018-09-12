@@ -9,7 +9,7 @@ class Category < ActiveRecord::Base
     id_count = get_id_count(Favorite.all)
 
     id_count.keys.first(num).map do |id|
-      Category.find(id)
+      puts Category.find(id).name
     end
   end
   

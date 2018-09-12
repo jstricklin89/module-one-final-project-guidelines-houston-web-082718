@@ -31,9 +31,59 @@ class CLI
     end
 
     def new_account
+        puts "Please enter your name and your account will be created."
+        @@input = gets.chomp
+        
+        @@current_user = User.create(name: @@input)
+        puts "************************************"
+        user_menu
     end
 
     def explore
+        puts "*******************************************"
+        puts "Please enter any of the following commands:"
+        puts "To view the most popular beers: enter 1"
+        puts "To view the most popular categories: enter 2"
+        puts "To view the most popular styles: enter 3"
+        puts "*******************************************"
+        @explore_input = gets.chomp.to_i
+        puts "*******************************************"
+
+        case @explore_input
+        when 1
+            puts "How many popular beers would you like to see? Enter a number: "
+            puts "*******************************************"
+            beer_num = gets.chomp.to_i
+            puts "*******************************************"
+            Beer.most_popular(beer_num)
+            puts "*******************************************"
+            puts "To go back to Welcome Menu press Enter."
+            input = gets.chomp
+            welcome
+        when 2
+            puts "How many popular categories would you like to see? Enter a number: "
+            puts "*******************************************"
+            cat_num = gets.chomp.to_i
+            puts "*******************************************"
+            Category.most_popular(cat_num)
+            puts "*******************************************"
+            puts "To go back to Welcome Menu press Enter."
+            gets.chomp
+            welcome
+        when 3
+            puts "How many popular styles would you like to see? Enter a number: "
+            puts "*******************************************"
+            style_num = gets.chomp.to_i
+            puts "*******************************************"
+            Style.most_popular(style_num)
+            puts "*******************************************"
+            puts "To go back to Welcome Menu press Enter."
+            gets.chomp
+            welcome
+        else 
+            puts "Try again. Numbers 1, 2, or 3 only please."
+            explore 
+        end
     end
 
     def invalid_input

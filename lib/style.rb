@@ -9,7 +9,7 @@ class Style < ActiveRecord::Base
     id_count = get_id_count(Favorite.all)
 
     id_count.keys.first(num).map do |id|
-      Style.find(id)
+      puts Style.find(id).name
     end
   end
   
