@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
   has_many :breweries, through: :beers
   has_many :categories, through: :beers
 
+  def add_favorite(id)
+    Favorite.create(user_id: self.id, beer_id: id)
+  end
+
   def most_popular_breweries(num)
     id_count = get_id_count(self.breweries)
   
