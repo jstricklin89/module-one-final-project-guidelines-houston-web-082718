@@ -9,6 +9,11 @@ class User < ActiveRecord::Base
     Favorite.create(user_id: self.id, beer_id: id)
   end
 
+  def delete_favorite(id)
+    fav = self.favorites.find_by(beer_id: id)
+    fav.destroy
+  end
+
   def favorite_beer_names
     self.beers.each do |beer|
       puts "#{beer.brewery.name} - #{beer.name}"
@@ -45,7 +50,8 @@ class User < ActiveRecord::Base
     self.favorites.each do |fav|
       sum += Beer.find(fav.beer_id).abv
     end
-    puts "Your average ABV is #{(sum / self.favorites.length).round(2)}%."
+    avg = (sum / self.favorites.length).round(2)
+    puts "Your average ABV is #{avg}%."
   end
 
   private

@@ -11,7 +11,7 @@ class Beer < ActiveRecord::Base
     id_count = get_id_count(Favorite.all)
 
     id_count.keys.first(num).map do |id|
-      puts Beer.find(id).name
+      puts "#{Beer.find(id).brewery.name} - #{Beer.find(id).name}"
     end
   end
   
