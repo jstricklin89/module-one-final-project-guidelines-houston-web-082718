@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   def add_favorite(id)
     Favorite.create(user_id: self.id, beer_id: id)
+    binding.pry
   end
 
   def delete_favorite(id)
@@ -18,7 +19,6 @@ class User < ActiveRecord::Base
     self.beers.each do |beer|
       puts "#{beer.brewery.name} - #{beer.name}"
     end
-    nil
   end
 
   def most_popular_breweries(num)

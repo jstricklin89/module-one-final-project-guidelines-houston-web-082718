@@ -28,6 +28,8 @@ class CLI
     end
 
     def user_menu
+        @@current_user = User.all.find_by(name: input)
+
         puts "Welcome, #{@@current_user.name}. What would you like to do?".colorize(:cyan)
         puts "Please enter any of the following commands:".colorize(:cyan)
         puts "Add new favorite: enter 1".colorize(:cyan)
