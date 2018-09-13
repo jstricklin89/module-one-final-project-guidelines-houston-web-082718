@@ -3,15 +3,16 @@ require 'pry'
 class CLI
 
     @@current_user = nil
+    @@user_name_input = ""
 
     def log_in
         puts "Please enter your name.".colorize(:cyan)
         puts "*******************************************".colorize(:yellow)
-        input = gets.chomp
+        @@user_name_input = gets.chomp
         puts "*******************************************".colorize(:yellow)
         
-        if User.all.find_by(name: input) 
-            @@current_user = User.all.find_by(name: input)
+        if User.all.find_by(name: @@user_name_input) 
+            @@current_user = User.all.find_by(name: @@user_name_input)
             user_menu
         else
             puts "There is no user with this name! Press enter to try again, or enter 1 to create a new account.".colorize(:cyan)
@@ -28,7 +29,7 @@ class CLI
     end
 
     def user_menu
-        @@current_user = User.all.find_by(name: input)
+        @@current_user = User.all.find_by(name: @@user_name_input)
 
         puts "Welcome, #{@@current_user.name}. What would you like to do?".colorize(:cyan)
         puts "Please enter any of the following commands:".colorize(:cyan)
@@ -206,7 +207,7 @@ class CLI
         puts "Are you sure? This action is not reversible. Enter 'Natty Light is the king of beers' to continue.".colorize(:cyan)
         puts "*******************************************".colorize(:yellow)
         input = gets.chomp
-        if input == "Natty Light is the king of beers".colorize(:cyan)
+        if input == "Natty Light is the king of beers"
             puts "*******************************************".colorize(:yellow)
             puts "We're going to quote you on that. Adios!".colorize(:cyan)
             puts "*******************************************".colorize(:yellow)
@@ -229,9 +230,9 @@ class CLI
     def new_account
         puts "Please enter your user name and your account will be created.".colorize(:cyan)
         puts "*******************************************".colorize(:yellow)
-        input = gets.chomp
+        @@user_name_input = gets.chomp
         
-        if User.all.find_by(name: input)
+        if User.all.find_by(name: @@user_name_input)
             puts "*******************************************".colorize(:yellow)
             puts "That user name is already taken! Please enter a different user name.".colorize(:cyan)
             puts "Press enter to continue.".colorize(:cyan)
@@ -240,7 +241,7 @@ class CLI
             puts "*******************************************".colorize(:yellow)
             new_account
         else
-            @@current_user = User.create(name: input)
+            @@current_user = User.create(name: @@user_name_input)
             puts "*******************************************".colorize(:yellow)
             user_menu
         end
@@ -304,7 +305,7 @@ class CLI
 
     def welcome
         puts "*******************************************".colorize(:yellow)
-        puts "Welcome to (insert app name here)! Please type 1 to log in, 2 to create a new account, 3 to explore data, or 4 to quit.".colorize(:cyan)
+        puts "Welcome to J&G Beer Tracker! Please type 1 to log in, 2 to create a new account, 3 to explore data, or 4 to quit.".colorize(:cyan)
         puts "*******************************************".colorize(:yellow)
         input = gets.chomp
         puts "*******************************************".colorize(:yellow)

@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
 
   def add_favorite(id)
     Favorite.create(user_id: self.id, beer_id: id)
-    binding.pry
   end
 
   def delete_favorite(id)
