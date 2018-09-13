@@ -52,6 +52,18 @@ class User < ActiveRecord::Base
     end
     avg = (sum / self.favorites.length).round(2)
     puts "Your average ABV is #{avg}%."
+
+    if avg <= 4
+      puts "You might as well be drinking water!"
+    elsif avg > 4 && avg <= 6
+      puts "That's a pretty standard amount of alcohol!"
+    elsif avg > 6 && avg <= 8
+      puts "You like your beers a bit stronger!"
+    elsif avg > 8 && avg <= 10
+      puts "Wow. Those are some pretty stiff drinks."
+    elsif avg > 10
+      puts "You might consider getting some help. We think you could have a problem."
+    end
   end
 
   private
