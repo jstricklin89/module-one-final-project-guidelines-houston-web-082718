@@ -1,78 +1,48 @@
-# Project Title
+# Module 1 Final Project - J&G Beer Tracker
 
-One Paragraph of project description goes here
+The J&G Beer Tracker application is built in Ruby and is designed to run as a CLI. We used a CSV flatfile to import a large 
+database of 5000+ beers into our database using ActiveRecord. Once the program is ran it will allow the end user to create a 
+new login with their full name, add personal favorite beers, and then return the results they are interested in based on their
+favorites. If a user does not want to create a login, they can also just browse the database and still see top results for
+different beer styles, names, and categories. If a user logs out they will still be in the database and can always log in again at a later time.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+You can run this program by executing `ruby bin/run.rb`. It will call on the environment file which has the bundler and database connection that are required to run the program.
+Before you execute the program you will need to run a few preliminary steps listed in prerequisites.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+1. Run a `bundle install` once you have cloned the files locally.
+2. Run a rake db:migrate to create the database and prepare it for seeding the data.
+3. Run a rake db:seed to seed all the database files into the database. Notice these files are in the openbeercsv folder.
+4. Run `ruby bin/run.rb`
 
-```
-Give examples
-```
+## Running the program
 
-### Installing
+Once you have ran the run.rb executable you can start by creating a new user:
 
-A step by step series of examples that tell you how to get a development env running
+Press 2+enter > type your full name +enter > follow the in menu prompts to add and view favorites.
+  *Note- you have to enter the favorites by beer_id. You can use any number between 1-5000 or open the beer.csv file and grab an ID from there to use to add a favorite.*
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+If you just want to view data without logging in:
+  You can hit 3 at the main menu and follow the next prompt screen to browse.
+  
+Once you are an existing user you are in the database until deleted. Next time you run the app you can just press 1 to login and then follow the same prompts to view favorites, etc.
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Ruby](https://ruby-doc.org/) - The language used
+* [ActiveRecord](https://guides.rubyonrails.org/active_record_basics.html) - The ORM Used
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+This was a project for a programming bootcamp. You can reach out to either of us through GitHub, but this probably isnt necessary.
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Graham Watson** - *Shared work* - [Flatiron School](https://github.com/gwatson86)
+* **Jonathan Stricklin** - *Shared work* - [Flatiron School](https://github.com/jstricklin89)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
@@ -82,7 +52,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* All the instructors and students at Flatiron School Houston for getting us this far
 
